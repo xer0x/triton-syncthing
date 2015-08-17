@@ -6,11 +6,11 @@ triton-syncthing
 ### How to run
 
 	docker run -d \
-	  --name syncthing \
-	  --restart always \
-          -p 8384 -p 22000 -p 21025/udp \
-          xer0x/triton-syncthing
-        
+    --name syncthing \
+    --restart always \
+    -p 8384 -p 22000 -p 21025/udp \
+    xer0x/triton-syncthing
+
 Then access Syncthing Web UI at [http://localhost:8384/]()
 
 
