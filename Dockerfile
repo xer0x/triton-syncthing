@@ -1,7 +1,7 @@
 FROM golang
-MAINTAINER Ilya Stepanov <dev@ilyastepanov.com>
+MAINTAINER Drew Miller <drew@joyent.com>
 
-ENV VERSION v0.11.19
+ENV VERSION v0.11.20
 
 ENV DEBIAN_FRONTEND noninteractive
 
@@ -20,6 +20,8 @@ RUN mkdir -p /go/src/github.com/syncthing && \
     mv bin/syncthing /home/syncthing/syncthing && \
     chown syncthing:syncthing /home/syncthing/syncthing && \
     rm -rf /go/src/github.com/syncthing
+
+RUN go get github.com/syncthing/syncthing-cli
 
 ADD start.sh /start.sh
 RUN chmod +x /start.sh

@@ -9,9 +9,10 @@ triton-syncthing
     --name syncthing \
     --restart always \
     -p 8384 -p 22000 -p 21025/udp \
+    --link consul \
     xer0x/triton-syncthing
 
 Then access Syncthing Web UI at [http://localhost:8384/]()
 
 
-Thanks to istepanov this image is based on istepanov/docker-syncthing
+Thanks to istepanov for creating istepanov/docker-syncthing.
