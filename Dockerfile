@@ -5,9 +5,9 @@ ENV VERSION v0.11.20
 
 ENV DEBIAN_FRONTEND noninteractive
 
-RUN apt-get update && \
-    apt-get install -y git xmlstarlet && \
-    rm -rf /var/lib/apt/lists/*
+#RUN apt-get update && \
+#    apt-get install -y git xmlstarlet && \
+#    rm -rf /var/lib/apt/lists/*
 
 RUN useradd -m syncthing
 
@@ -26,10 +26,17 @@ RUN go get github.com/syncthing/syncthing-cli
 ADD start.sh /start.sh
 RUN chmod +x /start.sh
 
+ADD setup.sh /setup.sh
+RUN chmod +x /setup.sh
+
 WORKDIR /home/syncthing
 
 VOLUME ["/home/syncthing/.config/syncthing", "/home/syncthing/Sync"]
 
 EXPOSE 8384 22000 21025/udp
 
-CMD ["/start.sh"]
+#CMD ["/start.sh"]
+
+ENTRYPOINT ["/start.sh"]¬
+CMD ["couchbase-server", "--", "-noinput"]¬
+
