@@ -17,8 +17,8 @@ function setAuthKeys {
 }
 
 function getAuthKeys {
-  export STUSERNAME=$(curl -L -s -f http://$consul:8500/v1/kv/syncthing/username | json -aH Value | base64 --decode)
-  export STPASSWORD=$(curl -L -s -f http://$consul:8500/v1/kv/syncthing/password | json -aH Value | base64 --decode)
+  export STUSERNAME=$(curl --retry 6 --retry-delay 3 -L -s -f http://$consul:8500/v1/kv/syncthing/username | json -aH Value | base64 --decode)
+  export STPASSWORD=$(curl --retry 6 --retry-delay 3 -L -s -f http://$consul:8500/v1/kv/syncthing/password | json -aH Value | base64 --decode)
 }
 
 function getConfiguration {
