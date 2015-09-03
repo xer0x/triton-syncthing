@@ -47,7 +47,7 @@ function register_service_with_consul {
   echo '# Registering service instance'
   echo '#'
 
-  curl -f --retry 7 --retry-delay 3 http://$consul:8500/v1/agent/service/register -d "$(printf '{"ID":"%s","Name":"syncthing","Address":"%s"}' $MY_ID $MYIPPRIVATE)"
+  curl -f -s --retry 7 --retry-delay 3 http://$consul:8500/v1/agent/service/register -d "$(printf '{"ID":"%s","Name":"syncthing","Address":"%s"}' $MY_ID $MYIPPRIVATE)"
   if [ $? == 0 ]; then
     echo "# Added ${MY_ID} to Syncthing cluster"
     touch /setup.finished
